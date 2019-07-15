@@ -53,7 +53,7 @@ trait CanHaveMasterAXI4MemPort { this: BaseSubsystem =>
     })
 
     memAXI4Node := mbus.toDRAMController(Some(portName)) {
-      AXI4UserYanker() := AXI4IdIndexer(memPortParams.idBits) := TLToAXI4()
+      AXI4UserYanker() := AXI4IdIndexer(memPortParams.idBits) := TLToAXI4() := TLSimpleL2Cache() // Add L2 Cache
     }
 
     memAXI4Node
